@@ -15,6 +15,21 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private float thrusterForce = 1000f;
 
+    [SerializeField]
+    private float thrusterFuelBurnSpeed = 1f;
+
+    [SerializeField]
+    private float thrusterFuelRegenSpeed = 0.3f;
+    private float thrusterFuelAmount = 1f;
+
+    public float GetThrusterFuelAmount()
+    {
+        return thrusterFuelAmount;
+    }
+
+    [SerializeField]
+    private LayerMask enviromentMask;
+
     [Header("Spring Settings: ")]
     [SerializeField]
     private float jointSpring;
@@ -37,6 +52,18 @@ public class PlayerController : MonoBehaviour {
 
     private void Update()
     {
+        //set target position for spring
+        //make the physics act right when applying
+        //gravity when flying over objects
+        RaycastHit _hit;
+        if(Physics.Raycast (transform.position, Vector3.down, out _hit, 100f, enviromentMask))
+        {
+            joint.targetPosition = new Vector3(0f, -_hit.point.y, 0f);
+        } else
+        {
+            joint.targetPosition = new Vector3(0f, 0f, 0f);
+        }
+
         // calculate movement celocity as a 3d vector
         float _xMov = Input.GetAxis("Horizontal");
         float _zMov = Input.GetAxis("Vertical");
@@ -73,14 +100,22 @@ public class PlayerController : MonoBehaviour {
 
         //calculate thruster force based on player input
         Vector3 _thrusterForce = Vector3.zero;
-        if (Input.GetButton("Jump"))
+        if (Input.GetButton("Jump") && thrusterFuelAmount > 0f)
         {
-            _thrusterForce = Vector3.up * thrusterForce;
-            SetJointSettings(0f);
+            thrusterFuelAmount -= thrusterFuelBurnSpeed * Time.deltaTime;
+
+            if(thrusterFuelAmount >= 0.01f)
+            {
+                _thrusterForce = Vector3.up * thrusterForce;
+                SetJointSettings(0f);
+            }
         } else
         {
+            thrusterFuelAmount += thrusterFuelRegenSpeed * Time.deltaTime;
             SetJointSettings(jointSpring);
         }
+
+        thrusterFuelAmount = Mathf.Clamp(thrusterFuelAmount, 0, 1);
 
         //apply thruster force
         motor.ApplyThruster(_thrusterForce);
