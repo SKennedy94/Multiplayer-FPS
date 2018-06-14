@@ -1,0 +1,40 @@
+Mono path[0] = 'C:/Users/Shamus/Desktop/Unity Projects/Multiplayer FPS/Builds/TestBuild/TestBuild_Data/Managed'
+Mono path[1] = 'C:/Users/Shamus/Desktop/Unity Projects/Multiplayer FPS/Builds/TestBuild/TestBuild_Data/Mono'
+Mono config path = 'C:/Users/Shamus/Desktop/Unity Projects/Multiplayer FPS/Builds/TestBuild/TestBuild_Data/Mono/etc'
+PlayerConnection initialized from C:/Users/Shamus/Desktop/Unity Projects/Multiplayer FPS/Builds/TestBuild/TestBuild_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55142
+Multi-casting "[IP] 10.0.0.17 [Port] 55142 [Flags] 2 [Guid] 918965054 [EditorId] 2408897524 [Version] 1048832 [Id] WindowsPlayer(Seamus) [Debug] 0" to [225.0.0.222:54997]...
+Started listening to [0.0.0.0:55142]
+PlayerConnection already initialized - listening to [0.0.0.0:55142]
+Player data archive not found at `C:/Users/Shamus/Desktop/Unity Projects/Multiplayer FPS/Builds/TestBuild/TestBuild_Data/data.unity3d`, using local filesystemInitialize engine version: 5.6.3p2 (b3d7a6428558)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: AMD Radeon R9 200 Series (ID=0x67b1)
+    Vendor:   ATI
+    VRAM:     3072 MB
+    Driver:   23.20.15017.3010
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Shamus\Desktop\Unity Projects\Multiplayer FPS\Builds\TestBuild\TestBuild_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Shamus\Desktop\Unity Projects\Multiplayer FPS\Builds\TestBuild\TestBuild_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Shamus\Desktop\Unity Projects\Multiplayer FPS\Builds\TestBuild\TestBuild_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Shamus\Desktop\Unity Projects\Multiplayer FPS\Builds\TestBuild\TestBuild_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Shamus\Desktop\Unity Projects\Multiplayer FPS\Builds\TestBuild\TestBuild_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Shamus\Desktop\Unity Projects\Multiplayer FPS\Builds\TestBuild\TestBuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Shamus\Desktop\Unity Projects\Multiplayer FPS\Builds\TestBuild\TestBuild_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Shamus\Desktop\Unity Projects\Multiplayer FPS\Builds\TestBuild\TestBuild_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Shamus\Desktop\Unity Projects\Multiplayer FPS\Builds\TestBuild\TestBuild_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Shamus\Desktop\Unity Projects\Multiplayer FPS\Builds\TestBuild\TestBuild_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.016 seconds
+Platform assembly: C:\Users\Shamus\Desktop\Unity Projects\Multiplayer FPS\Builds\TestBuild\TestBuild_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Shamus\Desktop\Unity Projects\Multiplayer FPS\Builds\TestBuild\TestBuild_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1080 59Hz; virtual: 4920x1920 at -1080,0
+<RI> Initialized touch support.
+UnloadTime: 0.871424 ms
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: 2f94 -> priority: 1 
+  Thread -> id: 11b0 -> priority: 1 
+  Thread -> id: 90c -> priority: 1 
+  Thread -> id: 2e44 -> priority: 1 
