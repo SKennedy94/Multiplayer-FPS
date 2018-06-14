@@ -32,17 +32,20 @@ public class Player : NetworkBehaviour {
     [SerializeField]
     private GameObject spawnEffect;
 
-    public void Setup()
-    {
-        wasEnabled = new bool[disableOnDeath.Length];
-        for (int i = 0; i < wasEnabled.Length; i++)
-        {
-            wasEnabled[i] = disableOnDeath[i].enabled;
-        }
+    private bool FirstSetup = true;
 
-        SetDefaults();
+    public void SetupPlayer()
+    {
+        if (isLocalPlayer)
+        {
+            //Switch cameras
+            switchCamera();
+        }
+        //player setup 
+        CmdBroadCastNewPlayerSetup();
     }
 
+    /*
      void Update()
      {  
          if (!isLocalPlayer)
@@ -55,6 +58,29 @@ public class Player : NetworkBehaviour {
              RpcTakeDamage(999999);
          }
      }
+     */
+
+    [Command]
+    private void CmdBroadCastNewPlayerSetup()
+    {
+        RpcSetupPlayerOnAllClients();
+    }
+
+    [ClientRpc]
+    private void RpcSetupPlayerOnAllClients()
+    {
+        if (FirstSetup)
+        {
+            wasEnabled = new bool[disableOnDeath.Length];
+            for (int i = 0; i < wasEnabled.Length; i++)
+            {
+                wasEnabled[i] = disableOnDeath[i].enabled;
+            }
+            FirstSetup = false;
+        }
+
+        SetDefaults();
+    }
 
     [ClientRpc]
     public void RpcTakeDamage (int _amount)
@@ -119,7 +145,9 @@ public class Player : NetworkBehaviour {
         transform.position = _spawnPoint.position;
         transform.rotation = _spawnPoint.rotation;
 
-        SetDefaults();
+        yield return new WaitForSeconds(0.1f);
+
+        SetupPlayer();
 
         Debug.Log(transform.name + " Respawned");
     }
@@ -145,17 +173,17 @@ public class Player : NetworkBehaviour {
         if (_col != null)
             _col.enabled = true;
 
-        //Switch cameras
-        if (isLocalPlayer)
-        {
-            GameManager.instance.SetSceneCameraActive(false);
-            GetComponent<PlayerSetup>().playerUIInstance.SetActive(true);
-        }
-
         //create spawn effect
         GameObject _GFXIns = (GameObject)Instantiate(spawnEffect, transform.position, Quaternion.identity);
         Destroy(_GFXIns, 3f);
 
+    }
+
+    private void switchCamera()
+    {
+        //Switch cameras
+        GameManager.instance.SetSceneCameraActive(false);
+        GetComponent<PlayerSetup>().playerUIInstance.SetActive(true);
     }
 
 }

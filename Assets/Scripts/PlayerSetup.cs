@@ -45,9 +45,9 @@ public class PlayerSetup : NetworkBehaviour {
                 Debug.LogError("no player ui component on playerui prefab");
             }
             ui.SetPlayerController(GetComponent<PlayerController>());
-        }
 
-        GetComponent<Player>().Setup();
+            GetComponent<Player>().SetupPlayer();
+        }
     }
 
     public override void OnStartClient()
@@ -78,6 +78,7 @@ public class PlayerSetup : NetworkBehaviour {
         //destory player UI
         Destroy (playerUIInstance);
 
+        if(isLocalPlayer)
         //Re-enable the scene camera
         GameManager.instance.SetSceneCameraActive(true);
 
