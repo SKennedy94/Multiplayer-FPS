@@ -52,6 +52,11 @@ public class PlayerController : MonoBehaviour {
 
     private void Update()
     {
+
+        if (Cursor.lockState != CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
         //set target position for spring
         //make the physics act right when applying
         //gravity when flying over objects
