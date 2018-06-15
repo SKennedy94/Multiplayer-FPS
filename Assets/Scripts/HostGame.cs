@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Networking;
 
 public class HostGame : MonoBehaviour
@@ -21,7 +20,7 @@ public class HostGame : MonoBehaviour
         }
     }
 
-    public void SetRoomName( string _name)
+    public void SetRoomName (string _name)
     {
         Debug.Log(_name);
         roomName = _name;
