@@ -52,6 +52,16 @@ public class PlayerController : MonoBehaviour {
 
     private void Update()
     {
+        if (PauseMenu.IsOn)
+        {
+            if (Cursor.lockState != CursorLockMode.None)
+                Cursor.lockState = CursorLockMode.None;
+
+            motor.Move(Vector3.zero);
+            motor.Rotate(Vector3.zero);
+            motor.RotateCamera(0f);
+                return;
+        }
 
         if (Cursor.lockState != CursorLockMode.Locked)
         {
