@@ -19,5 +19,5 @@ public class UserAccountManager : MonoBehaviour {
     }
 
     public static string LoggedIn_Username { get; protected set; }
-    public static string LoggedIn_Password { get protected set; }
+    public static string LoggedIn_Password { get; protected set; }
 }
